@@ -103,6 +103,7 @@ export default class Block extends Component {
       center,
       middle,
       spaceBetween,
+      borderRadius,
       left,
       right,
       top,
@@ -129,6 +130,7 @@ export default class Block extends Component {
       center && styles.center,
       middle && styles.middle,
       spaceBetween && styles.spaceBetween,
+      borderRadius && styles.borderRadius,
       left && styles.left,
       right && styles.right,
       top && styles.top,
@@ -138,8 +140,8 @@ export default class Block extends Component {
       card && styles.card,
       shadow && styles.shadow,
       wrap && { flexWrap: 'wrap' },
-      color && styles[color], // predefined styles colors for backgroundColor
-      color && !styles[color] && { backgroundColor: color }, // custom backgroundColor
+      color && styles[color],
+      color && !styles[color] && { backgroundColor: color },
       style, // rewrite predefined styles
     ];
 
@@ -172,6 +174,9 @@ export const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
   },
+  wrap: {
+    flexWrap: 'wrap'
+  },
   center: {
     alignItems: 'center',
   },
@@ -180,6 +185,9 @@ export const styles = StyleSheet.create({
   },
   spaceBetween: {
     justifyContent: 'space-between',
+  },
+  borderRadius: {
+    borderRadius: 6,
   },
   left: {
     alignItems: 'flex-start',

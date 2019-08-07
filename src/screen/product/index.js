@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Picker, StyleSheet, TouchableOpacity } from 'react-native';
 import Tab from '../../components/Tab';
-import SingleProductItem from '../../singleItems/SingleProductItem';
+import Block from '../../components/Block';
+import SingleProductContainer from '../../singleItems/SingleProductContainer';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class ProductScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tabHeaderType: 1,
+            date: ''
         };
     }
 
@@ -18,18 +21,56 @@ class ProductScreen extends Component {
     }
 
     render() {
+
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
+                <Block row margin={[20, 0, 20, 20]}>
+                    <Text style={{
+                        fontSize: 30,
+                        color: '#000',
+                        marginRight: 30
+                    }}>Filter</Text>
+                    <View style={{
+                        backgroundColor: '#fff',
+                        fontSize: 20,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        borderColor: '#bdc3c7',
+                        overflow: 'hidden'
+                    }}>
+                        <Picker
+                            style={{
+                                height: 40,
+                                width: 130,
+                            }}
+                            textStyle={{ fontSize: 12 }}
+                            selectedValue={this.state.date}
+                            onValueChange={(itemValue, itemIndex) =>
+                                this.setState({ language: itemValue })
+                            }>
+                            <Picker.Item label="27th July" value="27thuly" />
+                            <Picker.Item label="28th July" value="287thJuly" />
+                        </Picker>
+                    </View>
+                </Block>
                 <View style={{
-                    marginTop: 5
+                    marginTop: 5,
+                    marginHorizontal: 12
                 }}>
-                    {/* <Text>Hello ...</Text> */}
                     <Tab
                         tabItem={4}
-                        tabTitle_1="Raw Leads(250)"
+                        tabTitle_1="Raw Leads (250)"
                         tabTitle_2="Starred(43) (25%)"
                         tabTitle_3="Segmented (43)"
-                        tabTitle_4="Hot (43)"
+                        tabTitle_4={
+                            <Block row center>
+                                <MaterialCommunityIcons name="fire" size={20} color="red" />
+                                <Text style={{
+                                    marginLeft: 5,
+                                    fontSize: 10
+                                }}>hot (43)</Text>
+                            </Block>
+                        }
                         filterState_1={this.state.tabHeaderType === 1}
                         filterState_2={this.state.tabHeaderType === 2}
                         filterState_3={this.state.tabHeaderType === 3}
@@ -41,222 +82,9 @@ class ProductScreen extends Component {
                     />
                     {this.state.tabHeaderType === 1 ? (
                         <View>
-                            <View style={{
-                                margin: 10,
-                                borderWidth: 1,
-                                borderColor: '#444',
-                                padding: 5,
-                                borderRadius: 6
-                            }}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    backgroundColor: '#ddd',
-                                    paddingVertical: 6,
-                                    paddingHorizontal: 6,
-                                    borderRadius: 6
-                                }}>
-                                    <View>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Technologies Pvt. Ltd</Text>
-                                        </TouchableOpacity>
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: 'row',
-                                    }}>
-                                        <TouchableOpacity style={[styles.btn, { marginRight: 7 }]}>
-                                            <Text>WhatsApp</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Call</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    marginVertical: 10
-                                }}>
-                                    <Text style={{
-                                        marginRight: 40
-                                    }}>14 catalogues</Text>
-                                    <Text>3 products</Text>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    marginLeft: 6
-                                }}>
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                </View>
-
-                                <View style={{
-                                    marginTop: 10,
-                                    backgroundColor: '#999',
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 10,
-                                    borderRadius: 6
-                                }}>
-                                    <TouchableOpacity style={[styles.btn, { maxWidth: 160 }]}>
-                                        <Text>Star this lead</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={{
-                                margin: 10,
-                                borderWidth: 1,
-                                borderColor: '#444',
-                                padding: 5,
-                                borderRadius: 6
-                            }}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    backgroundColor: '#ddd',
-                                    paddingVertical: 6,
-                                    paddingHorizontal: 6,
-                                    borderRadius: 6
-                                }}>
-                                    <View>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Technologies Pvt. Ltd</Text>
-                                        </TouchableOpacity>
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: 'row',
-                                    }}>
-                                        <TouchableOpacity style={[styles.btn, { marginRight: 7 }]}>
-                                            <Text>WhatsApp</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Call</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    marginVertical: 10
-                                }}>
-                                    <Text style={{
-                                        marginRight: 40
-                                    }}>14 catalogues</Text>
-                                    <Text>3 products</Text>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    marginLeft: 6
-                                }}>
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                </View>
-
-                                <View style={{
-                                    marginTop: 10,
-                                    backgroundColor: '#999',
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 10,
-                                    borderRadius: 6
-                                }}>
-                                    <TouchableOpacity style={[styles.btn, { maxWidth: 160 }]}>
-                                        <Text>Star this lead</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={{
-                                margin: 10,
-                                borderWidth: 1,
-                                borderColor: '#444',
-                                padding: 5,
-                                borderRadius: 6
-                            }}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    backgroundColor: '#ddd',
-                                    paddingVertical: 6,
-                                    paddingHorizontal: 6,
-                                    borderRadius: 6
-                                }}>
-                                    <View>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Technologies Pvt. Ltd</Text>
-                                        </TouchableOpacity>
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: 'row',
-                                    }}>
-                                        <TouchableOpacity style={[styles.btn, { marginRight: 7 }]}>
-                                            <Text>WhatsApp</Text>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Text>Call</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    marginVertical: 10
-                                }}>
-                                    <Text style={{
-                                        marginRight: 40
-                                    }}>14 catalogues</Text>
-                                    <Text>3 products</Text>
-                                </View>
-
-                                <View style={{
-                                    flexDirection: 'row',
-                                    flexWrap: 'wrap',
-                                    marginLeft: 6
-                                }}>
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                    <SingleProductItem />
-                                </View>
-
-                                <View style={{
-                                    marginTop: 10,
-                                    backgroundColor: '#999',
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 10,
-                                    borderRadius: 6
-                                }}>
-                                    <TouchableOpacity style={[styles.btn, { maxWidth: 160 }]}>
-                                        <Text>Star this lead</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
+                            <SingleProductContainer />
+                            <SingleProductContainer />
+                            <SingleProductContainer />
                         </View>
                     ) : (
                             null
@@ -296,15 +124,5 @@ class ProductScreen extends Component {
 }
 
 
-const styles = StyleSheet.create({
-    btn: {
-        backgroundColor: '#ccc',
-        paddingVertical: 6,
-        paddingHorizontal: 8,
-        borderWidth: 1,
-        borderColor: '#777',
-        borderRadius: 6
-    }
-});
 
 export default ProductScreen;
