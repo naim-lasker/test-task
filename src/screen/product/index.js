@@ -4,6 +4,7 @@ import Tab from '../../components/Tab';
 import Block from '../../components/Block';
 import SingleProductContainer from '../../singleItems/SingleProductContainer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
 
 class ProductScreen extends Component {
     constructor(props) {
@@ -24,34 +25,43 @@ class ProductScreen extends Component {
 
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
-                <Block row margin={[20, 0, 20, 20]}>
-                    <Text style={{
-                        fontSize: 30,
-                        color: '#000',
-                        marginRight: 30
-                    }}>Filter</Text>
-                    <View style={{
-                        backgroundColor: '#fff',
-                        fontSize: 20,
-                        borderRadius: 30,
-                        borderWidth: 1,
-                        borderColor: '#bdc3c7',
-                        overflow: 'hidden'
-                    }}>
-                        <Picker
-                            style={{
-                                height: 40,
-                                width: 130,
-                            }}
-                            textStyle={{ fontSize: 12 }}
-                            selectedValue={this.state.date}
-                            onValueChange={(itemValue, itemIndex) =>
-                                this.setState({ language: itemValue })
-                            }>
-                            <Picker.Item label="27th July" value="27thuly" />
-                            <Picker.Item label="28th July" value="287thJuly" />
-                        </Picker>
-                    </View>
+                <Block margin={[20, 20, 20, 20]}>
+                    <Block row spaceBetween center>
+                        <View row style={{
+                            flexDirection: 'row'
+                        }}>
+                            <Text style={{
+                                fontSize: 30,
+                                color: '#000',
+                                marginRight: 30
+                            }}>Filter</Text>
+                            <View style={{
+                                backgroundColor: '#fff',
+                                fontSize: 20,
+                                borderRadius: 30,
+                                borderWidth: 1,
+                                borderColor: '#bdc3c7',
+                                overflow: 'hidden'
+                            }}>
+                                <Picker
+                                    style={{
+                                        height: 40,
+                                        width: 130,
+                                    }}
+                                    textStyle={{ fontSize: 12 }}
+                                    selectedValue={this.state.date}
+                                    onValueChange={(itemValue, itemIndex) =>
+                                        this.setState({ language: itemValue })
+                                    }>
+                                    <Picker.Item label="27th July" value="27thuly" />
+                                    <Picker.Item label="28th July" value="287thJuly" />
+                                </Picker>
+                            </View>
+                        </View>
+                        <View>
+                            <Feather name="loader" size={30} color="green" />
+                        </View>
+                    </Block>
                 </Block>
                 <View style={{
                     marginTop: 5,
