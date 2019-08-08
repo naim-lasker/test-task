@@ -46,9 +46,7 @@ const SingleProductContainer = (props) => {
                 <TouchableOpacity style={[styles.btn, { maxWidth: 160 }]}>
                     <Block row center>
                         <Octicons name="star" size={25} color="#000000" />
-                        <Text style={{
-                            marginLeft: 8
-                        }}>Star this lead</Text>
+                        <Text style={styles.btmButton}>Star this lead</Text>
                     </Block>
                 </TouchableOpacity>
             </Block>
@@ -83,6 +81,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#D8D8D8',
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0
+    },
+    btmButton: {
+        marginLeft: 8
     }
 });
 

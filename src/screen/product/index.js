@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Picker, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Picker, StyleSheet } from 'react-native';
 import Tab from '../../components/Tab';
 import Block from '../../components/Block';
 import SingleProductContainer from '../../singleItems/SingleProductContainer';
@@ -27,27 +27,11 @@ class ProductScreen extends Component {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Block margin={[20, 20, 20, 20]}>
                     <Block row spaceBetween center>
-                        <View row style={{
-                            flexDirection: 'row'
-                        }}>
-                            <Text style={{
-                                fontSize: 30,
-                                color: '#000',
-                                marginRight: 30
-                            }}>Filter</Text>
-                            <View style={{
-                                backgroundColor: '#fff',
-                                fontSize: 20,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                borderColor: '#bdc3c7',
-                                overflow: 'hidden'
-                            }}>
+                        <View style={styles.topPart}>
+                            <Text style={styles.filterText}>Filter</Text>
+                            <View style={styles.flterContainer}>
                                 <Picker
-                                    style={{
-                                        height: 40,
-                                        width: 130,
-                                    }}
+                                    style={styles.pickerSize}
                                     textStyle={{ fontSize: 12 }}
                                     selectedValue={this.state.date}
                                     onValueChange={(itemValue, itemIndex) =>
@@ -63,10 +47,7 @@ class ProductScreen extends Component {
                         </View>
                     </Block>
                 </Block>
-                <View style={{
-                    marginTop: 5,
-                    marginHorizontal: 12
-                }}>
+                <View style={styles.productsContainer}>
                     <Tab
                         tabItem={4}
                         tabTitle_1="Raw Leads (250)"
@@ -75,10 +56,7 @@ class ProductScreen extends Component {
                         tabTitle_4={
                             <Block row center>
                                 <MaterialCommunityIcons name="fire" size={20} color="red" />
-                                <Text style={{
-                                    marginLeft: 5,
-                                    fontSize: 10
-                                }}>hot (43)</Text>
+                                <Text style={styles.tabIconWithText}>hot (43)</Text>
                             </Block>
                         }
                         filterState_1={this.state.tabHeaderType === 1}
@@ -133,6 +111,35 @@ class ProductScreen extends Component {
     }
 }
 
-
+const styles = StyleSheet.create({
+    topPart: {
+        flexDirection: 'row'
+    },
+    filterText: {
+        fontSize: 30,
+        color: '#000',
+        marginRight: 30
+    },
+    flterContainer: {
+        backgroundColor: '#fff',
+        fontSize: 20,
+        borderRadius: 30,
+        borderWidth: 1,
+        borderColor: '#bdc3c7',
+        overflow: 'hidden'
+    },
+    pickerSize: {
+        height: 40,
+        width: 130,
+    },
+    productsContainer: {
+        marginTop: 5,
+        marginHorizontal: 12
+    },
+    tabIconWithText: {
+        marginLeft: 5,
+        fontSize: 10
+    }
+});
 
 export default ProductScreen;
